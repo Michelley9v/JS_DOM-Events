@@ -40,6 +40,8 @@ link.target = "_blank";
 
 // TODO: Insert the created <a> in the parent but before the <p> you just created using the element.insertBefore() method
 parent.insertBefore(link, newParagraph);
+console.log(link)
+
 /*----------- Exercise #3: REMOVING/REPLACING ELEMENTS/OBJECTS -----------*/
 
 // TODO: Replace the "Child Node" with a new <p> element that reads "New Child Node"
@@ -53,22 +55,34 @@ newChildNode.textContent = "Child that replaced old child";
 
 exercise3Container.replaceChild(newChildNode, oldChild);
 // TODO: Remove the "New Child Node"
-
-/*----------- Exercise #4: LIST ITEMS ----------- */
+setTimeout(() => {
+    exercise3Container.removeChild(newChildNode);
+}, 5000);
+console.log(oldChild);
+    /*----------- Exercise #4: LIST ITEMS ----------- */
 // Use the following array of values to generate a list on the DOM
 
 let list = [ "apples", "bananas", "carrots", "dragon fruit", "eggplant", "fish", "grapes", "honey", "ice bag", "juice (any kind)" ];
 
-
 // TODO: Create an unordered list element
-
+let ul = document.createElement("ul");
 // TODO: Iterate over the array values, and create a list item element for each
-
+list.forEach((item) => {
+let li = document.createElement("li");
+li.textContent = item;
 // TODO: Append the new list items to the unordered list element
 
-// TODO: Append the unordered list to the `div#container` under exercise 4 
+ul.appendChild(li);
+});
+console.log(ul);
+// TODO: Append the unordered list to the `div#container` under exercise 4
 
+document.querySelector("#container").appendChild(ul);
+
+console.log(document);
 /*----------- Exercise #5: DOM EVENTS --------------*/
+
+
 
 // TODO: write a function called "show" which creates a new div with an alerting message to the user with this message
 // -> "Clicking the button triggers the onclick event, which calls the JS function show()... which alerts the user"
